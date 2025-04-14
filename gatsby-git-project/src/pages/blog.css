@@ -1,0 +1,25 @@
+.blog-page {
+  padding: 2rem;
+}
+
+.posts {
+  display: grid;
+  gap: 2rem;
+}
+
+.post-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.post-card h2 {
+  margin: 0.5rem 0;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}

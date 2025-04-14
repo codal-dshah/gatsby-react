@@ -1,0 +1,41 @@
+/* Header Container */
+.header {
+  background: #fff; /* Adjust background color */
+  padding: 10px 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Flexbox for Logo & Menu */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ✅ Adds space between logo & menu */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 50px; /* Adjust logo size */
+  width: auto;
+}
+
+/* Menu Styling */
+.menu-list {
+  display: flex;
+  list-style: none;
+  gap: 20px; /* ✅ Adds spacing between menu items */
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+.menu-item a:hover {
+  color: #007bff;
+}
