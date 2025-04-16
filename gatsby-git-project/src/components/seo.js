@@ -5,32 +5,30 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const Seo = ({ description, lang, meta, title }) => {
-  const { wp, wpUser } = useStaticQuery(
-    graphql`
-      query {
-        wp {
-          generalSettings {
-            title
-            description
-          }
-        }
-
-        # if there's more than one user this would need to be filtered to the main user
-        wpUser {
-          twitter: name
+  const { wp, wpUser } = useStaticQuery(graphql`
+    query {
+      wp {
+        generalSettings {
+          title
+          description
         }
       }
-    `
-  )
 
-  const metaDescription = description || wp.generalSettings?.description
-  const defaultTitle = wp.generalSettings?.title
+      # if there's more than one user this would need to be filtered to the main user
+      wpUser {
+        twitter: name
+      }
+    }
+  `);
+
+  const metaDescription = description || wp.generalSettings?.description;
+  const defaultTitle = wp.generalSettings?.title;
 
   return (
     <Helmet
@@ -74,20 +72,20 @@ const Seo = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
     />
-  )
-}
+  );
+};
 
 Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default Seo
+export default Seo;

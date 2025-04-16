@@ -1,7 +1,8 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const CustomPageTemplate = ({ data }) => {
   const { title, content } = data.wpPage;
@@ -16,6 +17,15 @@ const CustomPageTemplate = ({ data }) => {
       <Footer />
     </>
   );
+};
+
+CustomPageTemplate.propTypes = {
+  data: PropTypes.shape({
+    wpPage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export const query = graphql`

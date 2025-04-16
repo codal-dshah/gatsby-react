@@ -1,11 +1,10 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Header from "./Header";
-import Banner from "./Banner";
-import Footer from "./Footer";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Header from './Header';
+import Banner from './Banner';
+import Footer from './Footer';
 
-
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   return (
     <div className="App">
       <Header />
@@ -28,6 +27,3 @@ export const query = graphql`
 `;
 
 export default IndexPage;
-
- 
-

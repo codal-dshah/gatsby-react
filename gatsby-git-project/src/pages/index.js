@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
-import { graphql } from "gatsby";
-import Header from "../components/Header";
-import Banner from "../components/Banner";
-import TestimonialSlider from "../components/TestimonialSlider";
-import { injectTestimonialSlider } from "../components/injectSlider";
-import Footer from "../components/Footer";
+import React, { useEffect } from 'react';
+import { graphql } from 'gatsby';
+import Header from '../components/Header';
+import Banner from '../components/Banner';
+import TestimonialSlider from '../components/TestimonialSlider';
+import { injectTestimonialSlider } from '../components/injectSlider';
+import Footer from '../components/Footer';
 
-
-const IndexPage = ({ data }) => {
-   useEffect(() => {
+const IndexPage = () => {
+  useEffect(() => {
     injectTestimonialSlider();
   }, []);
   return (
     <div className="App">
       <Header />
-      <Banner/>
+      <Banner />
       <TestimonialSlider />
       <Footer />
     </div>
@@ -34,6 +33,3 @@ export const query = graphql`
 `;
 
 export default IndexPage;
-
- 
-

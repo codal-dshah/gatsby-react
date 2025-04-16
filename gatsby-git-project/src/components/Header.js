@@ -1,7 +1,7 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Link } from "gatsby";
-import "./header.css"; // Import CSS file
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
+import './header.css'; // Import CSS file
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -12,14 +12,16 @@ const Header = () => {
           url
         }
       }
-      allWpMenuItem(filter: {locations: {eq: PRIMARY_MENU}}) {
+      allWpMenuItem(filter: { locations: { eq: PRIMARY_MENU } }) {
         nodes {
           id
           label
           url
         }
       }
-      allWpMediaItem(filter: {title: {eq: "pexels-souvenirpixels-414612"}}) {
+      allWpMediaItem(
+        filter: { title: { eq: "pexels-souvenirpixels-414612" } }
+      ) {
         nodes {
           sourceUrl
         }
@@ -29,7 +31,10 @@ const Header = () => {
 
   const siteTitle = data.wp.generalSettings.title;
   const menuItems = data.allWpMenuItem.nodes;
-  const logo = data.allWpMediaItem.nodes.length > 0 ? data.allWpMediaItem.nodes[0].sourceUrl : "";
+  const logo =
+    data.allWpMediaItem.nodes.length > 0
+      ? data.allWpMediaItem.nodes[0].sourceUrl
+      : '';
 
   return (
     <header className="header">

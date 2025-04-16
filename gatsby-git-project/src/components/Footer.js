@@ -1,9 +1,9 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import "../components/footer.css"; // Import styles
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import '../components/footer.css'; // Import styles
 
 const Footer = () => {
-   const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
       footer_menu1: wpMenu(id: { eq: "dGVybTo1" }) {
         name
@@ -50,10 +50,22 @@ const Footer = () => {
 
   // Store menus in an array for easier mapping
   const menus = [
-    { title: data?.footer_menu1?.name, items: data?.footer_menu1?.menuItems?.nodes },
-    { title: data?.footer_menu2?.name, items: data?.footer_menu2?.menuItems?.nodes },
-    { title: data?.footer_menu3?.name, items: data?.footer_menu3?.menuItems?.nodes },
-    { title: data?.footer_menu4?.name, items: data?.footer_menu4?.menuItems?.nodes },
+    {
+      title: data?.footer_menu1?.name,
+      items: data?.footer_menu1?.menuItems?.nodes,
+    },
+    {
+      title: data?.footer_menu2?.name,
+      items: data?.footer_menu2?.menuItems?.nodes,
+    },
+    {
+      title: data?.footer_menu3?.name,
+      items: data?.footer_menu3?.menuItems?.nodes,
+    },
+    {
+      title: data?.footer_menu4?.name,
+      items: data?.footer_menu4?.menuItems?.nodes,
+    },
   ];
 
   return (

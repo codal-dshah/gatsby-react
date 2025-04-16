@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "./Menu.css"; // Import CSS for styling
-import logo from "../assets/logo.png"; // ✅ Update path to your logo
-import Banner from "./Banner";
-
+import React, { useEffect, useState } from 'react';
+import './Menu.css'; // Import CSS for styling
+import logo from '../assets/logo.png'; // ✅ Update path to your logo
 
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost/wordpress-headless-1/wp-json/wp/v2/menu")
+    fetch('http://localhost/wordpress-headless-1/wp-json/wp/v2/menu')
       .then((response) => response.json())
       .then((data) => {
         // Check if API response contains menu items
@@ -18,14 +16,14 @@ const Menu = () => {
         } else if (data.items && Array.isArray(data.items)) {
           setMenuItems(data.items); // ✅ Adjust for nested structure
         } else {
-          console.error("Unexpected API response:", data);
-          setError("Invalid menu data received.");
+          console.error('Unexpected API response:', data);
+          setError('Invalid menu data received.');
           setMenuItems([]);
         }
       })
       .catch((error) => {
-        console.error("Error fetching menu:", error);
-        setError("Failed to load menu.");
+        console.error('Error fetching menu:', error);
+        setError('Failed to load menu.');
       });
   }, []);
 

@@ -1,9 +1,8 @@
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import './Banner.css';
 
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import "./Banner.css"; 
-
-const Banner = ({ pageId }) => {
+const Banner = () => {
   // Fetch page content using GraphQL
   const data = useStaticQuery(graphql`
     query {
@@ -18,16 +17,19 @@ const Banner = ({ pageId }) => {
       }
     }
   `);
-  console.log(data);
+
   if (!data.wpPage) {
     return <div>Loading...</div>;
   }
 
   const { title, content, featuredImage } = data.wpPage;
-  const bannerImage = featuredImage?.node?.sourceUrl || "default-image.jpg";
+  const bannerImage = featuredImage?.node?.sourceUrl || 'default-image.jpg';
 
   return (
-    <div className="banner-container">
+    <div
+      className="banner-container"
+      style={{ backgroundImage: `url(${bannerImage})` }}
+    >
       <div className="banner-text">
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
