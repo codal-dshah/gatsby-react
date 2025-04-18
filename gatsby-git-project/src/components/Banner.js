@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import './Banner.css';
 
-const Banner = ({pageID}) => {
+const Banner = () => {
   // Fetch page content using GraphQL
   const data = useStaticQuery(graphql`
     query {
