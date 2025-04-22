@@ -178,13 +178,15 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           slug
+          testTemplateFields {
+            templateName
+          }
         }
       }
     }
   `);
 
-
-   const posts = await graphql(`
+  const posts = await graphql(`
     query {
       allWpPost {
         nodes {
@@ -199,20 +201,51 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allWpPage.nodes.forEach((page) => {
     createPage({
       path: `/${page.slug}/`, // Page URL in Gatsby
-      component: path.resolve(`./src/templates/page.js`), // Template to use
+      component: path.resolve(`./src/templates/test.js`), // Template to use
       context: {
         id: page.id, // Pass ID to query
       },
     });
   });
 
-
-  posts.data.allWpPost.nodes.forEach(post => {
+  posts.data.allWpPost.nodes.forEach((post) => {
     createPage({
       path: post.uri,
-      component: require.resolve("./src/templates/blog-post.js"),
+      component: require.resolve('./src/templates/blog-post.js'),
       context: {
         id: post.id,
+      },
+    });
+  });
+
+  const customTestTemplate = await graphql(`
+    query {
+      allWpPage {
+        nodes {
+          id
+          slug
+          testTemplateFields {
+            templateName
+          }
+        }
+      }
+    }
+  `);
+  customTestTemplate.data.allWpPage.nodes.forEach((page) => {
+    const templateName = page.testTemplateFields.templateName || 'post';
+    let componentPath;
+    switch (templateName) {
+      case 'test':
+        componentPath = path.resolve(`./src/templates/test.js`);
+        break;
+      default:
+        componentPath = path.resolve(`./src/templates/page.js`);
+    }
+    createPage({
+      path: `/${page.slug}/`, // Page URL in Gatsby
+      component: componentPath, // Template to use
+      context: {
+        id: page.id, // Pass ID to query
       },
     });
   });
