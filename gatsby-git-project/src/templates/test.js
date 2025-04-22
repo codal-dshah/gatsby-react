@@ -26,6 +26,7 @@ CustomTemplate.propTypes = {
       content: PropTypes.string.isRequired,
       testTemplateFields: PropTypes.shape({
         templateName: PropTypes.string.isRequired,
+        templateName: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
